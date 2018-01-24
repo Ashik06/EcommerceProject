@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.niit.dao.SupplierDao;
 import com.niit.model.Supplier;
@@ -39,6 +40,17 @@ public class SupplierController {
 		model.addAttribute("supplierList", supplierList);
 		model.addAttribute("viewSupplierClicked", true);
 		return  "Adminsignin";
+	}
+	@RequestMapping("afteredit")
+	public String afterEdit(@ModelAttribute Supplier supplier){
+		supplierDao.saveOrUpdate(supplier);
+		return "redirect:viewSupplier";
+	}
+	@RequestMapping("deleteSupplier")
+	public String deleteSupplier(@RequestParam("supplierId") String supplierId){
+		supplierDao.delete(supplierId);
+		return "redirect:viewSupplier";
+		
 	}
 
 }

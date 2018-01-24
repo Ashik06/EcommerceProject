@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -139,7 +140,7 @@ body {
   <td><input class="form-control" type="text" name="productName" Id="productName"></td></tr>
  <tr><td> Product Description:</td>
  <td><input class="form-control" type="text" name="productdescription" Id="productdescription"></td></tr>
- <%-- <tr><td>  Category:</td><td><select name="category" Id="category">
+  <tr><td>  Category:</td><td><select name="category" Id="category">
    <option value="">select your category</option>
    	<c:forEach items="${categoryList}" var="category">
 <option value="${category.categoryName}">${category.categoryName}</option>
@@ -150,7 +151,7 @@ body {
    <c:forEach items="${supplierList}" var="supplier">	
    <option value="${supplier.name}">${supplier.name}</option>
    </c:forEach>
-</select></td></tr>--%>
+</select></td></tr>
 <tr><td>Price:</td><td>
 <input class="form-control" type="text" name="price" Id="price"></td></tr>
 <tr><td>stock:</td><td>

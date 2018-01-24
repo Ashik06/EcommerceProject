@@ -7,6 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<fieldset>
+<legend> supplier</legend>
+<form action="afteredit" action="post">
+Id:<br>
+  <input type="text" name="supplierid"value="${supplier.supplierid}" readonly="true"><br>
+  name:<br>
+  <input type="text" name="name" value="${supplier.name}"><br>
+   phoneNo:<br>
+  <input type="text" name="mobileno" value="${supplier.mobileno}"><br>
+  emailId:<br><input type="text" name="emailId"  value="${supplier.emailId}"><br>
+ address:<br><input type="text" name="address" value="${supplier.address}"><br>
+  <input type="submit" name="submit">
+</form>
+</fieldset>
 </body>
 </html>

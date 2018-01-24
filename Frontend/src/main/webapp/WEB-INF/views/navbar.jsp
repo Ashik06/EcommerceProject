@@ -127,8 +127,12 @@ li.dropdown {
 					<div class="dropdown">
 						<button class="dropbtn">Welcome:${pageContext.request.userPrincipal.name}</button>
 						<div class="dropdown-content">
-							<a href="${pageContext.request.contextPath}/user/goToCart"><i
-								class="fa fa-cart-plus" aria-hidden="true"> My Cart </i> </a> <a
+							
+                                 <c:if
+											test="${pageContext.request.userPrincipal.name != null }">
+											<a href="mycart"> MYCART</a>
+											
+										</c:if><a
 								href="${pageContext.request.contextPath}/user/goToOrders"><i
 								class="fa fa-cart-plus" aria-hidden="true"> My Orders </i> </a>
 								 <a

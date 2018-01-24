@@ -7,6 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
+<fieldset>
+<legend> category</legend>
+<form action="afterEdit" method="post">
+categoryid:<br>
+  <input type="text" name="id" value="${category.id}" readonly="true"><br>
 
+  categoryname:<br>
+  <input type="text" name="categoryName" value="${category.categoryName}"><br>
+  categorydetails:<br>
+  <input type="text" name="description" value="${category.description}">
+  <input type="submit" name="submit">
+</form>
+</fieldset>
 </body>
 </html>

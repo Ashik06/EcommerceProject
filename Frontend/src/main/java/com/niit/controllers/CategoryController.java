@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.niit.dao.CategoryDao;
 import com.niit.model.Category;
 
@@ -27,8 +29,8 @@ public class CategoryController {
 		
 		@RequestMapping("addcategory" )
 		public String addCategory(@ModelAttribute Category category){
-			categoryDao.updateCategory(category);
-			return "redirect:viewcategory";
+			categoryDao.saveOrUpdate(category);
+			return "redirect:viewCategory";
 		
 		}
 		@RequestMapping("viewCategory")
@@ -40,5 +42,24 @@ public class CategoryController {
 			return "Adminsignin";
 			
 		}
+		@RequestMapping("editCategory")
+		public String EditCategories(@RequestParam("categoryId") String categoryId, Model model){
+			
+			Category category = categoryDao.get(categoryId);
+			model.addAttribute("category", category);
+			model.addAttribute("EditCategoryClicked", true);
+			return "Adminsignin";
 		
+	}
+		@RequestMapping("afterEdit")
+		public String afterEdit(@ModelAttribute Category category){
+			categoryDao.saveOrUpdate(category);
+			return "redirect:viewCategory";
+		}
+		@RequestMapping("deleteCategory")
+		public String deleteCategory(@RequestParam("categoryId") String categoryId){
+			categoryDao.delete(categoryId);
+			return "redirect:viewCategory";
+			
+		}
 	}

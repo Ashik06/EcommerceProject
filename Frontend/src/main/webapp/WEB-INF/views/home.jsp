@@ -113,6 +113,8 @@
 		
 </div>
 </div>	
+    <%@include file="productList.jsp"%>
+
 
 </body>
 </html>
