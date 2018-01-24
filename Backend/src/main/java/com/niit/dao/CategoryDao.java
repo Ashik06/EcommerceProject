@@ -8,11 +8,11 @@ import com.niit.model.Category;
 
 public interface CategoryDao {
 
-	public boolean addCategory(Category category);
 	public List<Category> list();
-	public boolean deleteCategory(Category category);
-	public Category get(String id);
-	public boolean updateCategory(Category category);
-	
 
+	public Category get(String id);
+
+	public void saveOrUpdate(Category category);
+
+	public void delete(String id);
 }

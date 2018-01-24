@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,42 +11,23 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.model.Category;
 
-@Repository("categoryDao")
+@Repository("CategoryDao")
 public class CategoryDaoImpl implements CategoryDao {
 
 	@Autowired
-	SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 
-	@Transactional
-	public boolean addCategory(Category category) {
-		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(category);
-			return true;
-		} catch (Exception e) {
-			System.out.println("Exception arised" + e);
-			return false;
-		}
-	}
-
+	public CategoryDaoImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}    
+	  
 	@Transactional
 	public List<Category> list() {
+		
 		@SuppressWarnings("unchecked")
-		List<Category> listCategory = (List<Category>) sessionFactory.getCurrentSession().createCriteria(Category.class)
-				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+		List<Category> listCategory = (List<Category>) sessionFactory.getCurrentSession().createCriteria(Category.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 		return listCategory;
-	}
-
-	@Transactional
-	public boolean deleteCategory(Category category) {
-		try {
-			sessionFactory.getCurrentSession().delete(category);
-			return true;
-		} catch (Exception e) {
-			System.out.println("Exception arised" + e);
-			return false;
-		}
-	}
-
+	}  
 	@Transactional
 	public Category get(String id) {
 		String hql = "from Category where id ='" + id + "'";
@@ -60,15 +40,17 @@ public class CategoryDaoImpl implements CategoryDao {
 		}
 		return null;
 	}
-
 	@Transactional
-	public boolean updateCategory(Category category) {
-		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(category);
-			return true;
-		} catch (Exception e) {
-			System.out.println("Exception arised" + e);
-			return false;
-		}
+	public void saveOrUpdate(Category category) {
+		
+		sessionFactory.getCurrentSession().saveOrUpdate(category);
 	}
+	@Transactional
+	public void delete(String id) {
+		Category categoryToDelete = new Category();
+		categoryToDelete.setId(id);
+		sessionFactory.getCurrentSession().delete(categoryToDelete);
+		
+	}
+
 }
