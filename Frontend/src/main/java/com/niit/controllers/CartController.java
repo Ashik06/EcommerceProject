@@ -36,7 +36,7 @@ public class CartController {
 	public String addToCart(@RequestParam("productId") String productid ,Principal p, Model model){
 		
 		Product product = productDao.get(productid);
-		User user = userDao.getUser(p.getName()); 
+		User user = userDao.getByMailId(p.getName());
 		
 		Cart crt = cartDao.getByUserandProduct(p.getName(), productid);
 		
@@ -55,7 +55,7 @@ public class CartController {
 		    Random t = new Random();
 			int day = 2 + t.nextInt(6);
 			
-			cart.setUserid(user.getEmail());
+			cart.setUserid(user.getUserid());
 			cart.setName(user.getFirstname());
 			cart.setMailid(p.getName());
 			cart.setProductid(product.getProductid());
@@ -66,7 +66,7 @@ public class CartController {
 		    cart.setStatus("N");
 		    cart.setDays(day);
 			
-		cartDao.saveOrUpdate(cart);
+		    cartDao.saveOrUpdate(cart);
 			}
 		int stc=product.getStock()-1;
 		product.setStock(stc);
@@ -82,7 +82,7 @@ public class CartController {
 			model.addAttribute("msg", "Out of Stock");
 			return "Usersignin";
 		}
-				
+			
 	}
 
 	

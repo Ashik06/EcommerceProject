@@ -17,9 +17,21 @@
 <c:when test="${not empty myKartClicked}">
    <%@include file="/WEB-INF/views/mycart.jsp" %>
 </c:when>
+<c:when test="${not empty viewShipping}">
+   <%@include file="/WEB-INF/views/viewshipping.jsp" %>
+</c:when>
+<c:when test="${not empty newShippingClicked}">
+   <%@include file="/WEB-INF/views/shippingaddress.jsp" %>
+</c:when>
+<c:when test="${not empty EditShippingClicked}">
+   <%@include file="/WEB-INF/views/EditShipping.jsp" %>
+</c:when>
+<c:when test="${not empty deliveryaddress}">
+   <%@include file="/WEB-INF/views/successmsg.jsp" %>
+</c:when>
 <c:otherwise><%@include file="/WEB-INF/views/productList.jsp" %>
      </c:otherwise>
-    
+   
 </c:choose>
 </body>
 

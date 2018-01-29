@@ -35,12 +35,12 @@
 <td> Grand Total: </td>
 <td> ${total}</td> 
 </tr>
-<!-- <tr>
+<tr>
 <td><a href="proceed"><button>proceddelivery</button></a>
 </td>
 <td><a href="#"><button>grand total</button></a>
 </td>
-</tr> -->
+</tr>
 </table>
 </body>
 </html>
