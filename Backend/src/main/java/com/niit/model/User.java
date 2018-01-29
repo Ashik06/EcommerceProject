@@ -3,7 +3,7 @@ package com.niit.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.springframework.stereotype.Component;
@@ -14,6 +14,8 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue
+	private String userid;
 	private String email;
 	
 	private String firstname;
@@ -27,6 +29,12 @@ public class User implements Serializable {
 	private String enabled;
 	
 	
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 	public String getEmail() {
 		return email;
 	}

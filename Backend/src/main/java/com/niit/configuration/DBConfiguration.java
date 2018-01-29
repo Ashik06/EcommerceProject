@@ -15,9 +15,11 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.model.Billing;
 import com.niit.model.Cart;
 import com.niit.model.Category;
 import com.niit.model.Product;
+import com.niit.model.Shipping;
 import com.niit.model.Supplier;
 import com.niit.model.User;
 
@@ -51,7 +53,7 @@ public class DBConfiguration {
 		lsf.addProperties(hibernateProperties);
 		//An array of Class objects of all the entities
 		//Map all entities to relational table
-		Class classes[]=new Class[]{Product.class,Category.class,User.class,Supplier.class,Cart.class};
+		Class classes[]=new Class[]{Product.class,Category.class,User.class,Supplier.class,Cart.class,Shipping.class,Billing.class};
 	    return lsf.addAnnotatedClasses(classes).buildSessionFactory();
 	}
 	@Bean
